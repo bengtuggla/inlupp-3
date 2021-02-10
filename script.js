@@ -40,7 +40,7 @@ const printList = ()=>{
  user.forEach(item =>{
   userOutput.innerHTML += 
 
-    ` <div class="eachUser bg-white py-2 d-flex justify-content-between mb-2  rounded shadow">
+    ` <div class="eachUser bg-white py-2 d-flex justify-content-between mb-3 rounded shadow">
             <div class="userData px-1">
               <h4>${item.firstName} ${item.lastName}</h4>
               <h6>${item.email}</h6>
