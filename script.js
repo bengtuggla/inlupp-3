@@ -64,6 +64,18 @@ const validateEmail = (_email) => {
     return false;
   }
 }
+const checkUniqueEmail = (__email) => {
+  let error = document.querySelector('#email-error');
+ for(i=0; i< user.length; i++){
+  if(user[i].email === (__email))
+   {
+    // alert(`Ops fanns på ${i}`);
+   error.innerText = 'Epostadressen fanns redan!'
+  return true
+  }
+ }
+ 
+}
 
 form.addEventListener('submit', (e)=>{
  e.preventDefault();
@@ -84,9 +96,15 @@ form.addEventListener('submit', (e)=>{
     lastName: lastName,
     email: email,
    }
-   user.push(user2)
+    // checkUniqueEmail(email)
+    if(!checkUniqueEmail(email)){
+     user.push(user2)
+    }else{
+     email.classList.add('is-invalid');
+    }
+   
    printList();
-  
+ 
   form.reset();
  }else {
   console.log('Funkade inte');
