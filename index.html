@@ -13,6 +13,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
   <title>INLUPP3 - js</title>
 </head>
+
 <body class="bg-secondary">
   <div class="container bg-light col-md-6">
   <!-- Top banner -->
@@ -24,37 +25,53 @@
 
   <!-- Form -->
     <div class="container py-3 col-md-auto mb-3">
-        <form>
+        <form class="form">
+          <!-- FIRSTNAME -->
             <div class="form-group mb-3">
-              <label for="firstName">First name:</label>
-              <input type="text" name="firstName" id="firstName" class="form-control shadow" placeholder="Add First name">
+                <label for="firstName">First name:</label>
+                <input type="text" name="firstName" id="firstName" class="form-control shadow" placeholder="Add First name">
+                <!-- <div id="firstName-error"></div> -->
+                <div class="invalid-feedback" id="firstName-error"></div>
             </div>
+            <!-- LASTNAME -->
             <div class="form-group mb-3">
-              <label for="lastName">Last name:</label>
-              <input type="text" name="lastName" id="lastName" class="form-control shadow" placeholder="Add Last name">
+                <label for="lastName">Last name:</label>
+                <input type="text" name="lastName" id="lastName" class="form-control shadow" placeholder="Add Last name"> 
+                <!-- <div id="lastName-error"></div> -->
+                <div class="invalid-feedback" id="lastName-error"></div>
             </div>
+           
+            <!-- EMAILNAME -->
             <div class="form-group mb-3">
-              <label for="email">Email:</label>
-              <input type="email" name="email" id="email" class="form-control shadow" placeholder="Add Email">
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" class="form-control shadow" placeholder="Add Email">
+                <!-- <div id="email-error"></div> -->
+                <div class="invalid-feedback" id="email-error"></div>
             </div>
-            <button type="button" class="btn btn-primary shadow">Add user</button>
+            
+            <!-- SUBMIT BUTTON -->
+            <button type="submit" class="btn btn-primary shadow">Add user</button>
 
         </form>
     </div>
-    <div><h4 class="display-5 text-center">UserList</h4></div>
-      <section class="container userOutput col-md-12 bg-secondary py-3 rounded">
-        
-        <div class="eachUser   bg-white py-2 d-flex justify-content-between">
-            <div class="userData">
-              <h3>Bengt Uggla</h3>
-              <h5>bengt.uggla@gmail.com</h5>
-            </div>
-            <button class="btn-danger">X</button>
-            <button class="btn-info">Red</button>
-          </div>
-      </section>
+    <!-- End of Form -->
 
-</div>
+    <!-- User Output -->
+          <div><h4 class="display-5 text-center">UserList</h4></div>
+          <section class="container userOutput col-md-12 bg-secondary py-3 rounded">
+            <!-- Each User -->
+            <div class="eachUser   bg-white py-2 d-flex justify-content-between">
+                <div class="userData">
+                  <h3>Bengt Uggla</h3>
+                  <h5>bengt.uggla@gmail.com</h5>
+                </div>
+                <button class="btn-danger">X</button>
+                <button class="btn-info">Red</button>
+              </div>
+               <!-- End of Each User -->
+          </section>
+           <!-- End of User Output -->
+    </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
   <script src="./script.js"></script>
