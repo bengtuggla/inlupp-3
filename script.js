@@ -1,22 +1,5 @@
 const user = [
- {
-  id: 1,
-  firstName: 'Nisse',
-  lastName: 'Karlsson',
-  email: 'nils.karlsson@email.com'
- },
- {
-  id: 2,
-  firstName: 'Olle',
-  lastName: 'Olsson',
-  email: 'olle.olsson@email.com'
- },
- {
-  id: 3,
-  firstName: 'Pelle',
-  lastName: 'Petterson',
-  email: 'pelle.petterson@email.com'
- },
+
 ]
 
 const form = document.querySelector('.form');
@@ -90,15 +73,26 @@ form.addEventListener('submit', (e)=>{
 
  if(validate('#firstName') && validate('#lastName') && validateEmail(email)){
   //Nu kan vi skicka in användarobjektet i en array + displaya på sidan
-  console.log('Gick bra!');
+   let firstName = e.currentTarget.firstName.value;
+   let lastName = e.currentTarget.lastName.value;
+   let email = e.currentTarget.email.value;
+
+   const user2 = 
+   {
+    id: Date.now().toString(),
+    firstName: firstName,
+    lastName: lastName,
+    email: email,
+   }
+   user.push(user2)
+   printList();
+  
   form.reset();
  }else {
   console.log('Funkade inte');
  }
  // validateFirstName(e.currentTarget)
- // let firstName = e.currentTarget.firstName.value;
-/*  let lastName = e.currentTarget.lastName.value;
- let email = e.currentTarget.email.value; */
+
  
 
  /* const user2 = 
@@ -136,4 +130,4 @@ const printList = ()=>{
  })
 
 }
-printList();
+// printList();
