@@ -66,15 +66,14 @@ const validateEmail = (_email) => {
 }
 const checkUniqueEmail = (__email) => {
   let error = document.querySelector('#email-error');
- for(i=0; i< user.length; i++){
+  for(i=0; i< user.length; i++){
   if(user[i].email === (__email))
    {
-    // alert(`Ops fanns på ${i}`);
-   error.innerText = 'Epostadressen fanns redan!'
-  return true
+    email.classList.add('is-invalid');
+    error.innerText =   `E-mail ${__email} finns redan på plats ${i}. Fyll i unik epost!`
+    return true
   }
  }
- 
 }
 
 form.addEventListener('submit', (e)=>{
