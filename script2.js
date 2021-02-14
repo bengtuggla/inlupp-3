@@ -151,9 +151,10 @@ const printList = ()=>{
 }
 
 // Remove user from userOutput
-userOutput.addEventListener('click', (e)=> {
+userOutput.addEventListener('click', removeEditUser)
 
-      if(e.target && e.target.classList[1] == 'fa-user-slash'){
+function removeEditUser(e){
+   if(e.target && e.target.classList[1] == 'fa-user-slash'){
         e.target.parentNode.parentNode.parentNode.remove();
       }
 
@@ -170,8 +171,7 @@ userOutput.addEventListener('click', (e)=> {
 
     
      editUser(e);
-})
-
+}
 
 function editUser(e){
   //Edit user
@@ -223,7 +223,7 @@ function editUser(e){
                      console.log(` MATCH...dynId: ${dynamicId}  userId: ${user[i].id}`);
                     
                   } 
-                
+                 
             }
            
              // Hide Edit button and show Add button
@@ -233,7 +233,7 @@ function editUser(e){
             btnEdit.classList.add('hide')
             
         })
-      
+       
       }
       // return
        
