@@ -167,7 +167,13 @@ userOutput.addEventListener('click', (e)=> {
             })
       }
 
-      //Edit user
+    
+     editUser(e);
+})
+
+
+function editUser(e){
+  //Edit user
       if(e.target.classList[1] == 'fa-user-edit'){
         
         let dynamicFirstName =  e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.firstChild.innerText;
@@ -197,12 +203,12 @@ userOutput.addEventListener('click', (e)=> {
                       form.reset()
                       printList()
                       console.log(user);
-                      //  btn.removeEventListener('click',(e)=>{})
+                       
                   }      
             })
-
+            btn.removeEventListener('click',(e)=>{})
         })
        
       }
-})
-
+      return
+}
