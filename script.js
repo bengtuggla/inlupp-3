@@ -11,6 +11,7 @@ const lastName = document.querySelector('#lastName');
 const email = document.querySelector('#email');
 const userOutput = document.querySelector('.userOutput')
 const allInputs = document.querySelectorAll('input')
+const btn = document.querySelector('.btn')
 
 /* const validateFirstName=()=>{
  if(firstName.value === ''){
@@ -130,20 +131,16 @@ const printList = ()=>{
  userOutput.innerHTML = '';
 
   user.forEach(item =>{
-    //Testa att lägga till ett unikt id på <h6> för varje varv
-    // Id:t ska dean matchas mot den <h6> som har en removeknapp som syskon.
-    
-    console.log(item.id);
-    
+
    userOutput.innerHTML += 
 
      ` <div class="eachUser bg-white py-2 d-flex justify-content-between mb-3 rounded shadow">
              <div class="userData px-1">
-               <h4>${item.firstName} ${item.lastName}</h4>
+               <h4><span>${item.firstName}</span> <span>${item.lastName}</span></h4>
                <h6>${item.email}</h6>
              </div>
              <div class="buttons d-flex align-items-center mx-3">
-              <button class="btn-danger"><i class="fas fa-user-slash"></i></button>
+              <button class="btn-danger mx-4"><i class="fas fa-user-slash"></i></button>
               <button class="btn-info"><i class="fas fa-user-edit"></i></button>
              </div>
         </div>`
@@ -153,34 +150,64 @@ const printList = ()=>{
 
 // Remove user from userOutput
 userOutput.addEventListener('click', (e)=> {
-  if(e.target && e.target.classList[1] == 'fa-user-slash'){
-     e.target.parentNode.parentNode.parentNode.remove();
-  }
 
-  if(e.target.classList[1] == 'fa-user-slash'){
-    let dynamicEmail = e.target.parentNode.parentNode.parentNode.children[0].lastElementChild.innerText;
-    user.forEach((item, index)=>{
-      let i = index;
-      console.log(i);
-      if(dynamicEmail === item.email){
-        console.log(`  ${item.email}  ${i} removed from database and userList`);
-        console.log(user);
-        user.splice(i, 1)
-        console.log(user);
-
+      if(e.target && e.target.classList[1] == 'fa-user-slash'){
+        e.target.parentNode.parentNode.parentNode.remove();
       }
-    })
-    
-    // console.log(dynamicEmail);
-  }
+
+      if(e.target.classList[1] == 'fa-user-slash'){
+        let dynamicEmail = e.target.parentNode.parentNode.parentNode.children[0].lastElementChild.innerText;
+            user.forEach((item, index)=>{
+              let i = index;
+                  if(dynamicEmail === item.email){
+                    console.log(`  ${item.email}  ${i} removed from database and userList`);
+                    user.splice(i, 1)
+                  }
+            })
+      }
+
+      //Edit user
+      if(e.target.classList[1] == 'fa-user-edit'){
+        
+        let dynamicFirstName =  e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.firstChild.innerText;
+        let dynamicLastName = e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.lastChild.innerText
+        let dynamicEmail = e.target.parentNode.parentNode.parentNode.children[0].lastElementChild.innerText;
+        
+        firstName.value = dynamicFirstName
+        lastName.value = dynamicLastName
+        email.value = dynamicEmail
+        
+        btn.addEventListener('click', (e)=>{
+          e.preventDefault();
+
+             user.forEach((item, index)=>{
+              let i = index;
+              // let id = item.id;
+              // console.log(id);
+                  if(email.value === item.email){
+                    // console.log(`  ${item.email}  ${i} removed from database and userList`);
+                    user[i].firstName = firstName.value;
+                    user[i].lastName = lastName.value;
+                    user[i].email = email.value;
+                    console.log(user);
+                      printList()
+                      form.reset()
+                      console.log(user);
+                      //  btn.removeEventListener('click',(e)=>{})
+  
+                      
+                  }
+                  
+            })
+
+           
 
 
 
- /*  if(e.target.parentNode.parentNode.parentNode.children[0].lastElementChild.innerText === user[1].email){
-    console.log('SAAAMMMA');
-  }
- */
-   
-    
-    
+          
+        })
+       
+      }
+
 })
+
