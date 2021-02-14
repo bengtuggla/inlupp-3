@@ -182,6 +182,7 @@ function editUser(e){
         let dynamicEmail = e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.nextElementSibling.innerText;
         let dynamicId = e.target.parentNode.parentNode.parentNode.children[0].lastElementChild.innerText;
         console.log(e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.nextElementSibling.innerText);
+        
         firstName.value = dynamicFirstName
         lastName.value = dynamicLastName
         email.value = dynamicEmail
@@ -197,8 +198,6 @@ function editUser(e){
         
              user.forEach((item, index)=>{
               let i = index;
-              // let id = item.id;
-              // console.log(id);
                   if(dynamicId === item.id){
                     // console.log(`  ${item.email}  ${i} removed from database and userList`);
                     user[i].firstName = firstName.value;
@@ -211,12 +210,14 @@ function editUser(e){
                   }      
             })
              // Hide Edit button and show Add button
-             btnAdd.classList.remove('hide')
+            btnAdd.classList.remove('hide')
             btnAdd.classList.add('show')
             btnEdit.classList.remove('show')
             btnEdit.classList.add('hide')
+            
         })
-       
+      
       }
       // return
+       
 }

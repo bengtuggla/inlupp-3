@@ -182,6 +182,7 @@ function editUser(e){
         let dynamicEmail = e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.nextElementSibling.innerText;
         let dynamicId = e.target.parentNode.parentNode.parentNode.children[0].lastElementChild.innerText;
         console.log(e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.nextElementSibling.innerText);
+        
         firstName.value = dynamicFirstName
         lastName.value = dynamicLastName
         email.value = dynamicEmail
@@ -195,10 +196,8 @@ function editUser(e){
         btnEdit.addEventListener('click', (e)=>{
           e.preventDefault();
         
-             user.forEach((item, index)=>{
+          /*    user.forEach((item, index)=>{
               let i = index;
-              // let id = item.id;
-              // console.log(id);
                   if(dynamicId === item.id){
                     // console.log(`  ${item.email}  ${i} removed from database and userList`);
                     user[i].firstName = firstName.value;
@@ -209,14 +208,33 @@ function editUser(e){
                       printList()
                        
                   }      
-            })
+            }) */
+
+            for(i=0; i<user.length; i++){
+               if(dynamicId === user[i].id){
+                  
+                    user[i].firstName = firstName.value;
+                    user[i].lastName = lastName.value;
+                    user[i].email = email.value;
+                      
+                      form.reset()
+                      printList()
+                      console.log(user);
+                     console.log(` MATCH...dynId: ${dynamicId}  userId: ${user[i].id}`);
+                    
+                  } 
+                
+            }
+           
              // Hide Edit button and show Add button
-             btnAdd.classList.remove('hide')
+            btnAdd.classList.remove('hide')
             btnAdd.classList.add('show')
             btnEdit.classList.remove('show')
             btnEdit.classList.add('hide')
+            
         })
-       
+      
       }
       // return
+       
 }
