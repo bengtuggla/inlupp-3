@@ -231,16 +231,19 @@ function editUser(e){
                     if(dynamicId === user[i].id){
 
                    let tempArray = [{
+                     id:'',
                      firstName:'',
                      lastName: '',
                      email: ''
                    }];
 
-                    tempArray[0].firstName = firstName.value;
-                    tempArray[0].lastName = lastName.value;
-                    tempArray[0].email = email.value;
+                    tempArray[i].id = dynamicId;
+                    tempArray[i].firstName = firstName.value;
+                    tempArray[i].lastName = lastName.value;
+                    tempArray[i].email = email.value;
                     console.log(tempArray);
-                    user.splice(i,1,tempArray[0])
+                    user.splice(i,1,tempArray[i])
+
                     //  console.log(user);
                    /*  user[i].firstName = firstNam e.value;*/
                    /*  user[i].lastName = lastName. value;*/
@@ -251,7 +254,8 @@ function editUser(e){
                       
                     //   console.log(user);
                     //  console.log(` MATCH...dynId: ${dynamicId}  userId: ${user[i].id}`);
-                     form.reset()
+                    //  form.reset()
+
                        email.classList.add('is-valid');
                       email.classList.remove('is-invalid');
                     

@@ -195,20 +195,37 @@ function editUser(e){
 
         btnEdit.addEventListener('click', (e)=>{
           e.preventDefault();
-        console.log(e.currentTarget);
-          /*    user.forEach((item, index)=>{
+        
+           user.forEach((item, index)=>{
               let i = index;
                   if(dynamicId === item.id){
                     // console.log(`  ${item.email}  ${i} removed from database and userList`);
                     user[i].firstName = firstName.value;
                     user[i].lastName = lastName.value;
                     user[i].email = email.value;
-                      
-                      form.reset()
+                     
+                      // form.reset()
                       printList()
-                       
-                  }      
-            }) */
+                       console.log(`User[i] är ${user[i].firstName} och i är ${i}`);
+                  }     
+                  
+            btnAdd.classList.remove('hide')
+            btnAdd.classList.add('show')
+            btnEdit.classList.remove('show')
+            btnEdit.classList.add('hide')
+            }) 
+
+            /* 
+            Item n => kolla matchande Id:n => firstName, lastname, email-value => user[n]{} => Printpåsidan
+            
+            */
+            
+            
+            
+            
+            
+            
+            
 
         /*     for(i=0; i<user.length; i++){
                if(dynamicId === user[i].id){
@@ -227,40 +244,43 @@ function editUser(e){
                 
             } */
 
-                   for(i=0; i<user.length; i++){
+                  /*  for(i=0; i<user.length; i++){
                     if(dynamicId === user[i].id){
 
                    let tempArray = [{
-                       id: '',
+                     id:'',
                      firstName:'',
                      lastName: '',
                      email: ''
                    }];
-                   tempArray[0].id = Date.now().toString();
-                    tempArray[0].firstName = firstName.value;
-                    tempArray[0].lastName = lastName.value;
-                    tempArray[0].email = email.value;
+
+                    tempArray[i].id = dynamicId;
+                    tempArray[i].firstName = firstName.value;
+                    tempArray[i].lastName = lastName.value;
+                    tempArray[i].email = email.value;
                     console.log(tempArray);
-                    user.splice(i,1,tempArray[0])
+                    user.splice(i,1,tempArray[i])
+
                     //  console.log(user);
                    /*  user[i].firstName = firstNam e.value;*/
                    /*  user[i].lastName = lastName. value;*/
                    /*  user[i].email = email.value; */
                       
                       // form.reset()
-                      printList()
+                      // printList()
                       
                     //   console.log(user);
                     //  console.log(` MATCH...dynId: ${dynamicId}  userId: ${user[i].id}`);
-                     form.reset()
-                       email.classList.add('is-valid');
-                      email.classList.remove('is-invalid');
-                    
+                    //  form.reset()
+
+                      /*  email.classList.add('is-valid');
+                      email.classList.remove('is-invalid'); */
+         /*            
                   } 
                 
             }
-
-              
+ */
+               
 
 
 
@@ -269,10 +289,7 @@ function editUser(e){
       
            
              // Hide Edit button and show Add button
-            btnAdd.classList.remove('hide')
-            btnAdd.classList.add('show')
-            btnEdit.classList.remove('show')
-            btnEdit.classList.add('hide')
+           
             
         })
        
