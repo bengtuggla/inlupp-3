@@ -11,7 +11,8 @@ const lastName = document.querySelector('#lastName');
 const email = document.querySelector('#email');
 const userOutput = document.querySelector('.userOutput')
 const allInputs = document.querySelectorAll('input')
-const btn = document.querySelector('.btn')
+const btnEdit = document.querySelector('.btn-edit')
+const btnAdd = document.querySelector('.btn-add')
 
 /* const validateFirstName=()=>{
  if(firstName.value === ''){
@@ -185,10 +186,15 @@ function editUser(e){
         lastName.value = dynamicLastName
         email.value = dynamicEmail
        
-        
-        btn.addEventListener('click', (e)=>{
-          e.preventDefault();
+        // Hide add button and show Edit button
+         btnAdd.classList.add('hide')
+         btnAdd.classList.remove('show')
+         btnEdit.classList.add('show')
+         btnEdit.classList.remove('hide')
 
+        btnEdit.addEventListener('click', (e)=>{
+          e.preventDefault();
+        
              user.forEach((item, index)=>{
               let i = index;
               // let id = item.id;
@@ -198,17 +204,19 @@ function editUser(e){
                     user[i].firstName = firstName.value;
                     user[i].lastName = lastName.value;
                     user[i].email = email.value;
-                    console.log(user);
                       
                       form.reset()
                       printList()
-                      console.log(user);
                        
                   }      
             })
-            btn.removeEventListener('click',(e)=>{})
+             // Hide Edit button and show Add button
+             btnAdd.classList.remove('hide')
+            btnAdd.classList.add('show')
+            btnEdit.classList.remove('show')
+            btnEdit.classList.add('hide')
         })
        
       }
-      return
+      // return
 }

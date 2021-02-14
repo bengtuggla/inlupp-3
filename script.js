@@ -11,7 +11,8 @@ const lastName = document.querySelector('#lastName');
 const email = document.querySelector('#email');
 const userOutput = document.querySelector('.userOutput')
 const allInputs = document.querySelectorAll('input')
-const btn = document.querySelector('.btn')
+const btnEdit = document.querySelector('.btn-edit')
+const btnAdd = document.querySelector('.btn-add')
 
 /* const validateFirstName=()=>{
  if(firstName.value === ''){
@@ -138,6 +139,7 @@ const printList = ()=>{
              <div class="userData px-1">
                <h4><span>${item.firstName}</span> <span>${item.lastName}</span></h4>
                <h6>${item.email}</h6>
+               <div class="idHidden">${item.id}</div>
              </div>
              <div class="buttons d-flex align-items-center mx-3">
               <button class="btn-danger mx-4"><i class="fas fa-user-slash"></i></button>
@@ -166,48 +168,55 @@ userOutput.addEventListener('click', (e)=> {
             })
       }
 
-      //Edit user
+    
+     editUser(e);
+})
+
+
+function editUser(e){
+  //Edit user
       if(e.target.classList[1] == 'fa-user-edit'){
         
         let dynamicFirstName =  e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.firstChild.innerText;
         let dynamicLastName = e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.lastChild.innerText
-        let dynamicEmail = e.target.parentNode.parentNode.parentNode.children[0].lastElementChild.innerText;
-        
+        let dynamicEmail = e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.nextElementSibling.innerText;
+        let dynamicId = e.target.parentNode.parentNode.parentNode.children[0].lastElementChild.innerText;
+        console.log(e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.nextElementSibling.innerText);
         firstName.value = dynamicFirstName
         lastName.value = dynamicLastName
         email.value = dynamicEmail
-        
-        btn.addEventListener('click', (e)=>{
-          e.preventDefault();
+       
+        // Hide add button and show Edit button
+         btnAdd.classList.add('hide')
+         btnAdd.classList.remove('show')
+         btnEdit.classList.add('show')
+         btnEdit.classList.remove('hide')
 
+        btnEdit.addEventListener('click', (e)=>{
+          e.preventDefault();
+        
              user.forEach((item, index)=>{
               let i = index;
               // let id = item.id;
               // console.log(id);
-                  if(email.value === item.email){
+                  if(dynamicId === item.id){
                     // console.log(`  ${item.email}  ${i} removed from database and userList`);
                     user[i].firstName = firstName.value;
                     user[i].lastName = lastName.value;
                     user[i].email = email.value;
-                    console.log(user);
-                      printList()
-                      form.reset()
-                      console.log(user);
-                      //  btn.removeEventListener('click',(e)=>{})
-  
                       
-                  }
-                  
+                      form.reset()
+                      printList()
+                       
+                  }      
             })
-
-           
-
-
-
-          
+             // Hide Edit button and show Add button
+             btnAdd.classList.remove('hide')
+            btnAdd.classList.add('show')
+            btnEdit.classList.remove('show')
+            btnEdit.classList.add('hide')
         })
        
       }
-
-})
-
+      // return
+}
