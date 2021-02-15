@@ -193,90 +193,57 @@ function editUser(e){
          btnEdit.classList.add('show')
          btnEdit.classList.remove('hide')
 
-        btnEdit.addEventListener('click', (e)=>{
-          e.preventDefault();
-        console.log(e.currentTarget);
-          /*    user.forEach((item, index)=>{
-              let i = index;
-                  if(dynamicId === item.id){
-                    // console.log(`  ${item.email}  ${i} removed from database and userList`);
-                    user[i].firstName = firstName.value;
-                    user[i].lastName = lastName.value;
-                    user[i].email = email.value;
-                      
-                      form.reset()
-                      printList()
-                       
-                  }      
-            }) */
+        
+        btnEdit.addEventListener('click', edit);
+        // Enter key triggers edit funktion instead of validate
+        form.addEventListener('submit', edit);
+        
 
-        /*     for(i=0; i<user.length; i++){
-               if(dynamicId === user[i].id){
-                   
-                    user[i].firstName = firstName.value;
-                    user[i].lastName = lastName.value;
-                    user[i].email = email.value;
-                      
-                      form.reset()
-                      printList()
-                      
-                      console.log(user);
-                     console.log(` MATCH...dynId: ${dynamicId}  userId: ${user[i].id}`);
-                    
-                  } 
+        // FUNCTION EDIT
+        function edit(e){
+              e.preventDefault();
+            
+              for(i=0; i<user.length; i++){
+                if(dynamicId === user[i].id){
+
+              let tempArray = [{
+                id: '',
+                firstName:'',
+                lastName: '',
+                email: ''
+              }];
+
+              /* HOW TO VALIDATE HERE? */
+                // if(validate(firstName.value) && validate(lastName.value)){
+                // }
+
+                tempArray[0].id = Date.now().toString();
+                tempArray[0].firstName = firstName.value;
+                tempArray[0].lastName = lastName.value;
+                tempArray[0].email = email.value;
                 
-            } */
 
-                   for(i=0; i<user.length; i++){
-                    if(dynamicId === user[i].id){
+                user.splice(i,1,tempArray[0])
 
-                   let tempArray = [{
-                       id: '',
-                     firstName:'',
-                     lastName: '',
-                     email: ''
-                   }];
-                   tempArray[0].id = Date.now().toString();
-                    tempArray[0].firstName = firstName.value;
-                    tempArray[0].lastName = lastName.value;
-                    tempArray[0].email = email.value;
-                    console.log(tempArray);
-                    user.splice(i,1,tempArray[0])
-                    //  console.log(user);
-                   /*  user[i].firstName = firstNam e.value;*/
-                   /*  user[i].lastName = lastName. value;*/
-                   /*  user[i].email = email.value; */
-                      
-                      // form.reset()
-                      printList()
-                      
-                    //   console.log(user);
-                    //  console.log(` MATCH...dynId: ${dynamicId}  userId: ${user[i].id}`);
-                     form.reset()
-                       email.classList.add('is-valid');
-                      email.classList.remove('is-invalid');
-                    
-                  } 
-                
+               
+                  printList()
+                form.reset()
+                  email.classList.add('is-valid');
+                  email.classList.remove('is-invalid');
+              }  
             }
 
-              
-
-
-
-
-
-      
-           
-             // Hide Edit button and show Add button
-            btnAdd.classList.remove('hide')
-            btnAdd.classList.add('show')
-            btnEdit.classList.remove('show')
-            btnEdit.classList.add('hide')
-            
-        })
-       
-      }
-      // return
-       
+            // Hide Edit button and show Add button
+                  btnAdd.classList.remove('hide')
+                  btnAdd.classList.add('show')
+                  btnEdit.classList.remove('show')
+                  btnEdit.classList.add('hide')
+          }
+      }   
 }
+
+
+
+
+
+    
