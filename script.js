@@ -141,7 +141,7 @@ const printList = ()=>{
                <h6>${item.email}</h6>
                <div class="idHidden">${item.id}</div>
              </div>
-             <div class="buttons d-flex align-items-center mx-3">
+             <div class="buttons d-flex align-items-center mx-1">
               <button class="btn-danger mx-4"><i class="fas fa-user-slash"></i></button>
               <button class="btn-info"><i class="fas fa-user-edit"></i></button>
              </div>
