@@ -187,6 +187,7 @@ function editUser(e){
         lastName.value = dynamicLastName
         email.value = dynamicEmail
        
+
         // Hide add button and show Edit button
          btnAdd.classList.add('hide')
          btnAdd.classList.remove('show')
@@ -213,21 +214,38 @@ function editUser(e){
                 email: ''
               }];
 
-              /* HOW TO VALIDATE HERE? */
-                // if(validate(firstName.value) && validate(lastName.value)){
-                // }
-
+              /* Validation of edited Userdata  */
+              
                 tempArray[0].id = Date.now().toString();
-                tempArray[0].firstName = firstName.value;
+                tempArray[0].firstName = firstName.value
                 tempArray[0].lastName = lastName.value;
                 tempArray[0].email = email.value;
+
+                 while((firstName.value === '' || firstName.value.length < 2) || (lastName.value === '' || lastName.value.length < 2)){
+                  
+                  firstName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN!'
+                  lastName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN!'
+                  email.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN!'
                 
+                  editUser(e.target.classList[1] == 'fa-user-edit')
+                  firstName.classList.remove('is-invalid');
+                  firstName.classList.add('is-valid');
+                }
+                if(!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.value))){
+                
+                  firstName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN >>'
+                  lastName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN >>'
+                  email.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN >>'
+                
+                  editUser(e.target.classList[1] == 'fa-user-edit')
+                  firstName.classList.remove('is-invalid');
+                  firstName.classList.add('is-valid');
+                }
 
                 user.splice(i,1,tempArray[0])
 
-               
                   printList()
-                form.reset()
+                  form.reset()
                   email.classList.add('is-valid');
                   email.classList.remove('is-invalid');
               }  
