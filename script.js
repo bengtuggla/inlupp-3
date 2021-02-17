@@ -5,14 +5,16 @@ const user = [
 const form = document.querySelector('.form');
 const firstName = document.querySelector('#firstName');
 const firstnameError = document.querySelector('#firstName-error')
-
+const emailError = document.querySelector('.invalid-feedback')
 
 const lastName = document.querySelector('#lastName');
 const email = document.querySelector('#email');
+const emailForm = document.querySelector('.emailForm')
 const userOutput = document.querySelector('.userOutput')
 const allInputs = document.querySelectorAll('input')
 const btnEdit = document.querySelector('.btn-edit')
 const btnAdd = document.querySelector('.btn-add')
+const dataInfo = document.querySelector('.dataInfo')
 
 /* const validateFirstName=()=>{
  if(firstName.value === ''){
@@ -113,6 +115,7 @@ form.addEventListener('submit', (e)=>{
         user.push(user2)
        }else{
         email.classList.add('is-invalid');
+        email.classList.remove('is-valid');
        }
     // end of checkUniqueEmail(email)
 
@@ -159,12 +162,20 @@ function removeEditUser(e){
       }
 
       if(e.target.classList[1] == 'fa-user-slash'){
-        let dynamicEmail = e.target.parentNode.parentNode.parentNode.children[0].lastElementChild.innerText;
+        let dynamicEmail = e.target.parentNode.parentNode.parentNode.children[0].firstElementChild.nextElementSibling.innerText;
+        console.log((dynamicEmail));
             user.forEach((item, index)=>{
               let i = index;
+              
+
                   if(dynamicEmail === item.email){
-                    // console.log(`  ${item.email}  ${i} removed from database and userList`);
+                    dataInfo.innerText = ` ${item.firstName} ${item.lastName} - ${item.email} removed from dB and userList`
+                    setTimeout(()=>{
+                      dataInfo.innerText = "";
+                    },2000)
+                      
                     user.splice(i, 1)
+                    console.log('index: ' + i);
                   }
             })
       }
@@ -223,24 +234,37 @@ function editUser(e){
 
                  while((firstName.value === '' || firstName.value.length < 2) || (lastName.value === '' || lastName.value.length < 2)){
                   
-                  firstName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN!'
-                  lastName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN!'
-                  email.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN!'
+                  //firstName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN!'
+                  //lastName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN!'
+                  //email.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN!'
                 
                   editUser(e.target.classList[1] == 'fa-user-edit')
+                 
+                  
                   firstName.classList.remove('is-invalid');
                   firstName.classList.add('is-valid');
+                  return false;
+                  
                 }
-                if(!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.value))){
+              
+                    
                 
+         /*        if(!(/^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(email.value))){
+                /* 
                   firstName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN >>'
                   lastName.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN >>'
-                  email.value = 'TRYCK PÅ REDIGERAKNAPPEN IGEN >>'
-                
-                  editUser(e.target.classList[1] == 'fa-user-edit')
-                  firstName.classList.remove('is-invalid');
+                  email.value = 'Vill du ÄNDRA mailadressen? Tryck Redigera IGEN>>' */
+
+                  //firstName.value = firstName.value
+                  //lastName.value = lastName.value
+                  //email.value = email.value 
+                  //emailError.innerText = 'HOPPSAN!'
+                  
+                  //editUser(e.target.classList[1] == 'fa-user-edit')
+                  /* firstName.classList.remove('is-invalid');
                   firstName.classList.add('is-valid');
-                }
+                  return false; 
+                } */
 
                 user.splice(i,1,tempArray[0])
 
@@ -259,9 +283,3 @@ function editUser(e){
           }
       }   
 }
-
-
-
-
-
-    

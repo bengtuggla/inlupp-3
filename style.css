@@ -1,13 +1,26 @@
+
 .idHidden{
- display: none;
-}
+    display: none;
+   }
+   
+   .show{
+    display: block;
+   }
+   
+   
+   
+   .hide{
+    display: none;
+   }
 
-.show{
- display: block;
-}
-
-
-
-.hide{
- display: none;
-}
+   .dataInfo{
+       background: #fcfdb7;
+       color: red;
+       text-transform: capitalize;
+       font-weight: bold;
+       font-style: italic;
+       font-size: 0.7rem;
+       margin: 1rem 1rem;
+       padding: 0.7rem 0;
+       
+   }
